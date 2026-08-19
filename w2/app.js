@@ -2,8 +2,8 @@ console.log('Hello from app.js! Your JavaScript is connected and running!');
 // --- Part 1: Select HTML elements ----
 // We use document.getElementById() to get a reference to an element by its unique ID.
 // We store these references in 'const' variables because the elements themselves won't change.
-const totalDisplayElement = document.getElementById("total-display");
-const updateButtonElement = document.getElementById("add-item-btn");
+let totalDisplayElement;
+let updateButtonElement;
 
 //These variables will change as the user interacts with the page.
 let totalCost = 0;
@@ -20,23 +20,22 @@ const handleButtonClick = function() {
         // template strings to easily combine our variables and text into a single message
     // This is basic decision-making in JavaScript!
     // Use a simple 'if' statement to make our page react differently based on clickCount.
-    if(totalCost >= 5) {
+    if(totalCost >= 60) {
         // We can even change the style of an HTML element directly with JavaScript!
         // Change text color
-        totalDisplayElement.style.color = 'lightgreen';
+        totalDisplayElement.style.color = 'red';
+        // append "over budget" to the end of the text content of our paragraph element
     } else {
-    totalDisplayElement.style.color = '#f9f7f7';
+    totalDisplayElement.style.color = '#070707';
     }
 
     // Update the text content of our paragraph element on the page.
     // This is how JavaScript makes changes visible on the web page!
-    totalDisplayElement.textContent = `Total Cost: $${totalCost}`;
+    totalDisplayElement.textContent = `Total Cost: $${totalCost}${totalCost >= 60 ? " (Over Budget!)" : ""}`;
 
     
     console.log(`Button clicked! Current total count: ${totalCost}`);
 };
-
-handleButtonClick();
 
 document.addEventListener('DOMContentLoaded', function() {
  // --- Part 3: Make the Button Clickable (Event Listener) ---
@@ -44,8 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // The 'DOMContentLoaded' event is perfect for this. It fires when the HTML document is ready.  
 
     console.log('DOM fully loaded and parsed, ready to go!');
+    totalDisplayElement = document.getElementById("total-display");
+    updateButtonElement = document.getElementById("add-item-btn");
 // Attach an event listener to our 'updateButton.
 // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute and update the click count.
     updateButtonElement.addEventListener('click', handleButtonClick);
+    handleButtonClick();
 
-})
+});
