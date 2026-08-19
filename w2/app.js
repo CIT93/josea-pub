@@ -2,8 +2,8 @@ console.log('Hello from app.js! Your JavaScript is connected and running!');
 // --- Part 1: Select HTML elements ----
 // We use document.getElementById() to get a reference to an element by its unique ID.
 // We store these references in 'const' variables because the elements themselves won't change.
-const messageDisplayElement = document.getElementById("output-message");
-const updateButtonElement = document.getElementById("update-button");
+const totalDisplayElement = document.getElementById("total-display");
+const updateButtonElement = document.getElementById("add-item-btn");
 
 //These variables will change as the user interacts with the page.
 let userName = "Jose";
@@ -25,14 +25,14 @@ const handleButtonClick = function() {
         // We can even change the style of an HTML element directly with JavaScript!
         // Change text color
         message += '   Nice! You have clicked the button 5 or more times!';
-        messageDisplayElement.style.color = 'lightgreen';
+        totalDisplayElement.style.color = 'lightgreen';
     } else {
-    messageDisplayElement.style.color = '#f9f7f7';
+    totalDisplayElement.style.color = '#f9f7f7';
     }
 
     // Update the text content of our paragraph element on the page.
     // This is how JavaScript makes changes visible on the web page!
-    messageDisplayElement.textContent = message;
+    totalDisplayElement.textContent = message;
 
 
     
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed, ready to go!');
 // Attach an event listener to our 'updateButton.
 // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute and update the click count.
-    updateButton.addEventListener('click', handleButtonClick);
+    updateButtonElement.addEventListener('click', handleButtonClick);
 
-    messageDisplayElement.textContent = `Welcome ${userName}! Click the button to start!`;
+    totalDisplayElement.textContent = `Welcome ${userName}! Click the button to start!`;
 })
