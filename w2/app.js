@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Attach an event listener to our 'updateButton.
 // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute and update the click count.
     updateButtonElement.addEventListener('click', handleButtonClick);
+    // Note: The button does work and adds to the total cost when clicked, and changes color when over budget. for step 2.4, I might have updated this before this by accident.
     handleButtonClick();
 
 });
