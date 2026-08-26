@@ -1,4 +1,6 @@
+import * as orderForm from "/w3/order-handler.js";
 console.log('Hello from app.js! Your JavaScript is connected and running!');
+
 // --- Part 1: Select HTML elements ----
 // We use document.getElementById() to get a reference to an element by its unique ID.
 // We store these references in 'const' variables because the elements themselves won't change.
@@ -13,6 +15,7 @@ const itemPrice = 15;
 // A function is a block of code designed to perform a particular task.
 
 const handleButtonClick = function() {
+    if (!totalDisplayElement) return;
     //clickCount = clickCount + 1;
     // increase the clickCount variable by 1 each time the button is clicked
     totalCost += itemPrice;
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateButtonElement = document.getElementById("add-item-btn");
 // Attach an event listener to our 'updateButton.
 // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute and update the click count.
-    updateButtonElement.addEventListener('click', handleButtonClick);
+    updateButtonElement?.addEventListener('click', handleButtonClick);
     // Note: The button does work and adds to the total cost when clicked, and changes color when over budget. for step 2.4, I might have updated this before this by accident.
     handleButtonClick();
 
