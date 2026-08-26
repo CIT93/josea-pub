@@ -1,4 +1,4 @@
-import * as orderForm from "/w3/order-handler.js";
+import * as orderForm from "./order-handler.js";
 console.log('Hello from app.js! Your JavaScript is connected and running!');
 
 // --- Part 1: Select HTML elements ----
