@@ -3,7 +3,7 @@ import { getOrderInputs } from "./order-handler.js";
 import * as priceCalculator from "./price-calculator.js";
 
 const orderForm = document.getElementById('order-form');
-const orderSummary = document.getElementById('order-summary');
+const resultsDisplay = document.getElementById('results-display');
 
 const orders = [];
 
@@ -21,7 +21,7 @@ const { qty, size, giftWrap } = getOrderInputs();
     document.getElementById('display-size').textContent = size;
     document.getElementById('display-gift').textContent = giftWrap ? 'Yes' : 'No';
 
-    orderSummary.style.display = 'block';
+    resultsDisplay.style.display = 'block';
 
     const newOrder = {
         qty,
