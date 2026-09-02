@@ -24,8 +24,10 @@ const { qty, size, giftWrap } = getOrderInputs();
     orderSummary.style.display = 'block';
 
     const newOrder = {
-        ...orderData,
-        totalPrice: totalPrice,
+        qty,
+        size,
+        giftWrap,
+        totalPrice: totalCost,
         timestamp: new Date().toISOString()
     };
 
