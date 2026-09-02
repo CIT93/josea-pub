@@ -33,14 +33,6 @@ const { qty, size, giftWrap } = getOrderInputs();
 
     orders.push(newOrder);
     console.log(orders);
-
-    orderSummary.innerHTML = `
-        <p>Order Details:</p>
-        <p>Quantity: ${qty}</p>
-        <p>Size: ${size}</p>
-        <p>Gift Wrap: ${giftWrap ? 'Yes' : 'No'}</p>
-        <p>Total Cost: $${totalCost}</p>
-    `;
 };
 
 const init = function() {
