@@ -10,14 +10,18 @@ const orders = [];
 const handleOrderSubmit = function(event) {
     event.preventDefault();
 
-    const { qty, size, giftWrap } = getOrderInputs();
+const { qty, size, giftWrap } = getOrderInputs();
+
     const itemPrice = 15;
     const giftWrapPrice = 5;
     const totalCost = qty * itemPrice + (giftWrap ? qty * giftWrapPrice : 0);
 
-    const orderData = { quantity: qty, giftWrap: giftWrap };
-    const totalPriceObj = priceCalculator.calculateTotal(orderData);
-    const totalPrice = totalPriceObj.totalPrice;
+    document.getElementById('display-total').textContent = totalCost;
+    document.getElementById('display-qty').textContent = qty;
+    document.getElementById('display-size').textContent = size;
+    document.getElementById('display-gift').textContent = giftWrap ? 'Yes' : 'No';
+
+    orderSummary.style.display = 'block';
 
     const newOrder = {
         ...orderData,
