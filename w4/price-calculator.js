@@ -2,9 +2,9 @@ const shirtPrice = 15;
 const giftWrapPrice = 2;
 
 
-export const calculateTotal = (orderData) => {
-    const { quantity, giftWrap } = orderData;
-    let total = quantity * shirtPrice;
+export const calculateTotal = function(orderData) {
+    const { qty, giftWrap } = orderData;
+    let total = qty * shirtPrice;
     if (giftWrap) {
         total += giftWrapPrice;
     }
