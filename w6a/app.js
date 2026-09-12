@@ -1,7 +1,7 @@
 console.log('Hello from app.js! Your JavaScript is connected and running!');
 import { getOrderInputs } from "./order-handler.js";
 import * as priceCalculator from "./price-calculator.js";
-import { displayResults } from "./results-display.js";
+import * as resultsDisplay from "./results-display.js";
 
 const orderForm = document.getElementById('order-form');
 
@@ -20,8 +20,7 @@ const handleOrderSubmit = function(event) {
     };
 
     orders.push(newOrder);
-    console.log(orders);
-    displayResults(newOrder);
+    resultsDisplay.displayOrder(newOrder);
 };
 
 const init = function() {

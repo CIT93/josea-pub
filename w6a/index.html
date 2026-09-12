@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-<script type="module" src="app.js"></script>
+<script type="module" src="app.js" defer></script>
 <title>Persistent Orders</title>
 </head>
 <body>
@@ -33,11 +33,12 @@
 
     <hr>
     
-    <div id="results-display" style="display: none;">
+    <div id="order-summary" style="display: none;">
     <h2>Order Success!</h2>
     <p><strong>Total Cost:</strong> $<span id="display-total"></span></p>
     <p><strong>Details:</strong> <span id="display-qty"></span> <span id="display-size"></span> T-Shirt(s)</p>
     <p><strong>Gift Wrap:</strong> <span id="display-gift"></span></p>
+</div>
 </div>
 </body>
 </html>
