@@ -27,7 +27,8 @@ const handleOrderSubmit = function(event) {
 
 const clearOrders = function() {
     orders.length = 0;
-    localStorage.removeItem('orders');
+    // call the clearData function from order-storage.js to remove the data from local storage
+    orderStorage.clearData();
     orderList.renderOrders(orders);
     console.log('All orders cleared from local storage and UI');
 };

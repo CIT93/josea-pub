@@ -24,3 +24,13 @@ export function loadOrders() {
         return [];
     }
 };
+
+// make a function named clearData that will help clear the recent orders from the table and ensure that they dont reappear when the page is refreshed. This function should use localStorage.removeItem to remove the data from local storage.
+export function clearData() {
+    try {
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
+        console.log('Orders cleared from local storage');
+    } catch (error) {
+        console.error('Error clearing orders from local storage:', error);
+    }
+};
