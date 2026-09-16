@@ -25,6 +25,16 @@ const handleOrderSubmit = function(event) {
     orderList.renderOrders(orders);
 };
 
+const clearOrders = function() {
+    orders.length = 0;
+    localStorage.removeItem('orders');
+    orderList.renderOrders(orders);
+    console.log('All orders cleared from local storage and UI');
+};
+
+const clearBtn = document.getElementById('clear-btn');
+clearBtn.addEventListener('click', clearOrders);
+
 const init = function() {
     orderForm.addEventListener('submit', handleOrderSubmit);
     const loadedOrders = orderStorage.loadOrders();
