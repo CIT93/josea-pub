@@ -1,8 +1,8 @@
 console.log('Hello from app.js! Your JavaScript is connected and running!');
 import { getOrderInputs } from "./order-handler.js";
 import * as priceCalculator from "./price-calculator.js";
-import * as resultsDisplay from "./results-display.js";
 import * as orderStorage from "./order-storage.js";
+import * as orderList from "./order-list.js";
 
 const orderForm = document.getElementById('order-form');
 
@@ -22,7 +22,7 @@ const handleOrderSubmit = function(event) {
 
     orders.push(newOrder);
     orderStorage.saveOrders(orders);
-    resultsDisplay.displayOrder(newOrder);
+    orderList.renderOrders(orders);
 };
 
 const init = function() {
@@ -30,6 +30,7 @@ const init = function() {
     const loadedOrders = orderStorage.loadOrders();
     if (loadedOrders.length > 0) {
         orders.push(...loadedOrders);
+        orderList.renderOrders(orders);
     }
     console.log('Loaded orders from local storage');
     console.log('App Initialized');
