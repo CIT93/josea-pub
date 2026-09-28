@@ -86,7 +86,7 @@ const handleFormSubmit = function (event) {
     storage.saveEntries(carbonFootprintEntries);
 
     // console.log(calculatedResults);
-    resultsDisplay.displayResult(calculatedResults);
+    resultsDisplay.displayResults(calculatedResults);
     // Render the table with the updated list of entries.
     tableRenderer.renderTable(carbonFootprintEntries, {
         onDelete: handleDeleteEntry,

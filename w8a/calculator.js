@@ -24,10 +24,10 @@ const calculateHouseholdPoints = function(householdMembers) {
 
 const calculateHomeSizePoints = function(homeSquareFootage, isApartment = false) {
     if (isApartment) return 2;
-    else if (homeSquareFootage < 2000) return 10;
-    else if (homeSquareFootage >= 1000) return 7;
-    else if (homeSquareFootage > 0) return 4;
-    return 0;
+    else if (homeSquareFootage > 2000) return 10; // for home size greater than 2000 sq ft
+    else if (homeSquareFootage >= 1000) return 7; // for home size between 1000 and 2000 sq ft
+    else if (homeSquareFootage > 0) return 4; // for home size greater than 0 but less than 1000 sq ft
+    return 0; // default or invalid input
 };
 
 // @param {string} dietType - Type of diet ('meatHeavy', 'average', 'vegetarian', 'vegan')
