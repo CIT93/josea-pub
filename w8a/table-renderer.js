@@ -122,7 +122,7 @@ const formatDateForDisplay = function (timestamp) {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
-    });
+    );
 };
 
 // Formats Home Size for display in the table.
