@@ -14,14 +14,11 @@ const handleOrderSubmit = function(event) {
     const orderData = getOrderInputs();
     const priceData = priceCalculator.calculateTotal(orderData);
 
-// app.js - inside handleOrderSubmit
-const newOrder = {
-    id: Date.now().toString(), // <--- ADD THIS LINE (Unique ID based on time)
-    qty: qty,
-    size: size,
-    totalPrice: totalPrice,
-    // ... any other properties
-};
+    const newOrder = {
+        id: Date.now().toString(),
+        ...orderData,
+        ...priceData
+    };
 
     orders.push(newOrder);
     orderStorage.saveOrders(orders);
