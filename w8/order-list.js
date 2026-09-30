@@ -1,3 +1,6 @@
+// order-list.js top of file
+let moduleCallbacks = {};
+
 const orderTableBody = document.getElementById('order-table-body');
 
 const tableBody = document.getElementById('order-table-body');
@@ -11,13 +14,21 @@ tableBody.addEventListener('click', function(event) {
     // 2. Guard Clause: If they clicked a row (white space) but NOT a button, 
     // there will be no ID. So we stop the function immediately.
     if (!id) return;
-
-    // 3. Temporary Test: Log the ID to prove it works!
-    console.log("Clicked button with ID:", id); 
+    // if statement for checking if the target has the class 'delete-btn'
+    // if true, call moduleCallbacks.onDelete and pass the ID
+    if (target.classList.contains('delete-btn')) {
+        moduleCallbacks.onDelete(id);
+    }
+    // if statement for checking if the target has the class 'edit-btn'
+    // if true, call moduleCallbacks.onEdit and pass the ID
+    if (target.classList.contains('edit-btn')) {
+        moduleCallbacks.onEdit(id);
+    }
 });
 
 // Use classes edit-btn and delete-btn. Use data-id="${order.id}".
-export const renderOrders = function(orders) {
+export const renderOrders = function(orders, callbacks) {
+    moduleCallbacks = callbacks;
     orderTableBody.innerHTML = '';
     for (const order of orders) {
         const row = document.createElement('tr');

@@ -23,7 +23,18 @@ const handleOrderSubmit = function(event) {
 
     orders.push(newOrder);
     orderStorage.saveOrders(orders);
-    orderList.renderOrders(orders);
+    orderList.renderOrders(orders, {
+        onDelete: handleDelete,
+        onEdit: handleEdit
+    });
+};
+
+const handleDelete = function(id) {
+    console.log("App.js: Requesting delete for order", id);
+};
+
+const handleEdit = function(id) {
+    console.log("App.js: Requesting edit for order", id);
 };
 
 const clearOrders = function() {
@@ -42,7 +53,10 @@ const init = function() {
     const loadedOrders = orderStorage.loadOrders();
     if (loadedOrders.length > 0) {
         orders.push(...loadedOrders);
-        orderList.renderOrders(orders);
+        orderList.renderOrders(orders, {
+            onDelete: handleDelete,
+            onEdit: handleEdit
+        });
     }
     console.log('Loaded orders from local storage');
     console.log('App Initialized');
