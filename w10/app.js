@@ -14,14 +14,39 @@ const handleOrderSubmit = function(event) {
     const orderData = getOrderInputs();
     const priceData = priceCalculator.calculateTotal(orderData);
 
-    const newOrder = {
-        id: Date.now().toString(),
-        timestamp: new Date().toISOString(),
-        ...orderData,
-        ...priceData
-    };
+    // get the hidden id (order-id) input value
+    const orderIdInput = document.getElementById('order-id');
+    // if the id exists, update the object by merging it with the new orderData and total(priceData). Also use the spread operator.
+    if (orderIdInput && orderIdInput.value) {
+        const orderId = orderIdInput.value;
+        const index = orders.findIndex(order => order.id === orderId);
+        if (index !== -1) {
+            orders[index] = {
+                ...orders[index],
+                ...orderData,
+                ...priceData
+            };
+        } else {
+            const newOrder = {
+                id: Date.now().toString(),
+                timestamp: new Date().toISOString(),
+                ...orderData,
+                ...priceData
+            };
+            orders.push(newOrder);
+        }
+    } else {
+        const newOrder = {
+            id: Date.now().toString(),
+            timestamp: new Date().toISOString(),
+            ...orderData,
+            ...priceData
+        };
+        orders.push(newOrder);
+    }
 
-    orders.push(newOrder);
+    orderIdInput.value = '';
+    orderForm.reset();
     orderStorage.saveOrders(orders);
     orderList.renderOrders(orders, {
         onDelete: handleDelete,
