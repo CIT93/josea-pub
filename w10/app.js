@@ -43,7 +43,19 @@ const handleDelete = function(id) {
 };
 
 const handleEdit = function(id) {
-    console.log("App.js: Requesting edit for order", id);
+    const orderToEdit = orders.find(order => order.id === id);
+    if (!orderToEdit) return;
+
+    const qtyInput = document.getElementById('qty');
+    const sizeInput = document.querySelector('input[name="size"][value="' + orderToEdit.size + '"]');
+    const giftWrapInput = document.getElementById('gift-wrap');
+    const orderIdInput = document.getElementById('order-id');
+
+    if (qtyInput) qtyInput.value = orderToEdit.qty;
+    if (sizeInput) sizeInput.checked = true;
+    if (giftWrapInput) giftWrapInput.checked = orderToEdit.giftWrap;
+    if (orderIdInput) orderIdInput.value = orderToEdit.id;
+    console.log("App.js: Now editing order", id);
 };
 
 const clearOrders = function() {
